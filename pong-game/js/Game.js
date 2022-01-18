@@ -45,6 +45,117 @@ class Ball {
         this.speedY = 2;
         this.directionX = true; //true -> right
         this.directionY = true; //true -> down
+        this.move = collisionObjects => {
+            let collision = 0;
+            const ballLeft = this.positionX;
+            const ballRight = this.positionX + this.width;
+            const ballTop = this.positionY;
+            const ballBottom = this.positionY + this.height;
+        
+            if(this.directionX && this.directionY) {
+                for(let i = 0; i < collisionObjects.length; i++) {
+                    let objectLeft = collisionObjects[i].positionX;
+                    let objectRight = collisionObjects[i].positionX + collisionObjects[i].width;
+                    let objectTop = collisionObjects[i].positionY;
+                    let objectBottom = collisionObjects[i].positionY + collisionObjects[i].width;
+
+                    if(this === collisionObjects[i])
+                        continue;
+                    else if(((objectLeft <= ballLeft && ballLeft <= objectRight) || (objectLeft <= ballRight && ballRight <= objectRight)) && ((objectTop <= ballTop && ballTop <= objectBottom) || (objectTop <= ballBottom && ballBottom <= objectBottom))) {
+                        this.directionX != this.directionX;
+                        break;
+                    }
+
+                    if((ballLeft < objectRight && ((objectLeft <= ballLeft + this.speedX && ballLeft +this.speedX <= objectRight) || ((objectLeft <= ballRight + this.speedX && ballRight + this.speedX <= objectRight))) && (ballTop < objectBottom && ((objectTop <= ballTop + this.speedY && ballTop + this.speedY <= objectBottom) || (objectTop <= ballBottom + this.speedY && ballBottom + this.speedY <= objectBottom))))) {
+                        collision = 1;
+                        break;
+                    }else if(ballBottom + speedY > canvas.height) {
+                    collision = 2;
+                    break;
+                    }else if(ballLeft + this.speedX > canvas.width) {
+                    collision = 3;
+                    playerPoints++;
+                    break;
+                    }
+
+            }
+
+            } else if(this.directionX && !this.directionY){
+                for(let i = 0; i < collisionObjects.length; i++) {
+                    let objectLeft = collisionObjects[i].positionX;
+                    let objectRight = collisionObjects[i].positionX + collisionObjects[i].width;
+                    let objectTop = collisionObjects[i].positionY;
+                    let objectBottom = collisionObjects[i].positionY + collisionObjects[i].width;
+
+                    if(this === collisionObjects[i])
+                        continue;
+                    else if(((objectLeft <= ballLeft && ballLeft <= objectRight) || (objectLeft <= ballRight && ballRight <= objectRight)) && ((objectTop <= ballTop && ballTop <= objectBottom) || (objectTop <= ballBottom && ballBottom <= objectBottom))) {
+                        this.directionX != this.directionX;
+                        break;
+                    }
+
+                    if((ballLeft < objectRight && ((objectLeft <= ballLeft + this.speedX && ballLeft +this.speedX <= objectRight) || ((objectLeft <= ballRight + this.speedX && ballRight + this.speedX <= objectRight))) && (ballBottom > objectTop && ((objectTop <= ballTop - this.speedY && ballTop - this.speedY <= objectBottom) || (objectTop <= ballBottom - this.speedY && ballBottom - this.speedY <= objectBottom))))) {
+                        collision = 1;
+                        break;
+                    }else if(ballTop - this.speedY < 0) {
+                        collision = 2;
+                        break;
+                    }
+                    else if(ballLeft + this.speedX > canvas.width) {
+                        collision = 3;
+                        playerPoints++;
+                        break;
+                        }
+
+            }
+
+            } else if(!this.directionX && this.directionY){
+                for(let i = 0; i < collisionObjects.length; i++) {
+                    let objectLeft = collisionObjects[i].positionX;
+                    let objectRight = collisionObjects[i].positionX + collisionObjects[i].width;
+                    let objectTop = collisionObjects[i].positionY;
+                    let objectBottom = collisionObjects[i].positionY + collisionObjects[i].width;
+
+                    if(this === collisionObjects[i])
+                        continue;
+                    else if(((objectLeft <= ballLeft && ballLeft <= objectRight) || (objectLeft <= ballRight && ballRight <= objectRight)) && ((objectTop <= ballTop && ballTop <= objectBottom) || (objectTop <= ballBottom && ballBottom <= objectBottom))) {
+                        this.directionX != this.directionX;
+                        break;
+                    }
+
+                    if((ballRight > objectLeft && ((objectLeft <= ballLeft - this.speedX && ballLeft - this.speedX <= objectRight) || (objectLeft <= ballRight - this.speedX && ballRight - this.speedX <= objectRight))) && (ballTop < objectBottom && ((objectTop <= ballTop + this.speedY && ballTop + this.speedY <= objectBottom) || (objectTop <= ballBottom + this.speedY && ballBottom + this.speedY <= objectBottom)))) {
+                        collision = 1;
+                        break;
+                    }else if(ballBottom + speedY > canvas.height) {
+                        collision = 2;
+                        break;
+                    }
+                }
+            } else{
+                for(let i = 0; i < collisionObjects.length; i++) {
+                    let objectLeft = collisionObjects[i].positionX;
+                    let objectRight = collisionObjects[i].positionX + collisionObjects[i].width;
+                    let objectTop = collisionObjects[i].positionY;
+                    let objectBottom = collisionObjects[i].positionY + collisionObjects[i].width;
+
+                    if(this === collisionObjects[i])
+                        continue;
+                    else if(((objectLeft <= ballLeft && ballLeft <= objectRight) || (objectLeft <= ballRight && ballRight <= objectRight)) && ((objectTop <= ballTop && ballTop <= objectBottom) || (objectTop <= ballBottom && ballBottom <= objectBottom))) {
+                        this.directionX != this.directionX;
+                        break;
+                    }
+
+                    if((ballRight > objectLeft && ((objectLeft <= ballLeft - this.speedX && ballLeft - this.speedX <= objectRight) || (objectLeft <= ballRight - this.speedX && ballRight - this.speedX <= objectRight))) && (ballBottom > objectTop && ((objectTop <= ballTop - this.speedY && ballTop - this.speedY <= objectBottom) || (objectTop <= ballBottom - this.speedY && ballBottom - this.speedY <= objectBottom)))) {
+                        collision = 1;
+                        break;
+                    }else if(ballTop - this.speedY < 0) {
+                        collision = 2;
+                        break;
+                    }
+
+            }
+            }
+        }
     }
 }
         
