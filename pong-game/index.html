@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,9 +8,21 @@
     <link rel="stylesheet" href="style.css">
     <title>PongGame</title>
 </head>
+
 <body>
-    <canvas></canvas>
+    <div class="container">
+        <div class="table">
+            <span class="player-points">0</span>
+            <h1>Welcome to Pong</h1>
+            <span class="computer-points">0</span>
+        </div>
+        <canvas></canvas>
+        <div class="menu">
+            <button class="reset">Reset game</button>
+        </div>
+    </div>
 
     <script src="./js/Game.js"></script>
 </body>
+
 </html>
