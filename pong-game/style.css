@@ -3,6 +3,9 @@
 	padding: 0;
 	box-sizing: border-box;
 }
+html {
+	font-size: 10px;
+}
 body {
 	background-color: #000;
 	height: 100vh;
@@ -10,7 +13,46 @@ body {
 	justify-content: center;
 	align-items: center;
 }
-
-canvas {
+.container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: stretch;
 	border: 2px solid red;
+}
+.container .table {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	color: white;
+	font-size: 6rem;
+	line-height: 15rem;
+}
+.container .table h1 {
+	font-size: 6rem;
+}
+
+.container canvas {
+	border: 2px solid red;
+}
+.container .menu {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+
+.container .menu .reset {
+	margin: 1rem;
+	padding: 1rem;
+	background-color: rgb(73, 0, 0);
+	color: white;
+	font-size: 3rem;
+	cursor: pointer;
+	transition: color 0.2s linear, background-color 0.2s linear;
+}
+
+.container .menu .reset:hover {
+	background-color: white;
+	color: rgb(73, 0, 0);
 }
