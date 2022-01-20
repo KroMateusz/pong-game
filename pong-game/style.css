@@ -42,7 +42,9 @@ body {
 	justify-content: center;
 }
 
-.container .menu .reset {
+.container .menu .reset,
+.container .menu .add-ball,
+.container .menu .remove-ball {
 	margin: 1rem;
 	padding: 1rem;
 	background-color: rgb(73, 0, 0);
@@ -52,7 +54,9 @@ body {
 	transition: color 0.2s linear, background-color 0.2s linear;
 }
 
-.container .menu .reset:hover {
+.container .menu .reset:hover,
+.container .menu .add-ball:hover,
+.container .menu .remove-ball:hover {
 	background-color: white;
 	color: rgb(73, 0, 0);
 }
